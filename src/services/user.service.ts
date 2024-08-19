@@ -40,7 +40,7 @@ export class UserService {
   async findUserByEmail(email: string): Promise<User> {
     const foundUser = await this.userRepo.findOneBy({ email });
 
-    if (!foundUser) return null;
+    if (!foundUser) throw new Error("User not found");
 
     return foundUser;
   }
